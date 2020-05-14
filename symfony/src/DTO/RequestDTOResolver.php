@@ -9,6 +9,10 @@ use Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+/**
+ * Class RequestDTOResolver
+ * @package App\DTO
+ */
 class RequestDTOResolver implements ArgumentValueResolverInterface
 {
     /**

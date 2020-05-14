@@ -4,6 +4,10 @@ namespace App\Repository;
 
 use Doctrine\Persistence\ObjectRepository;
 
+/**
+ * Interface BinaryNodeRepositoryInterface
+ * @package App\Repository
+ */
 interface BinaryNodeRepositoryInterface extends ObjectRepository
 {
 

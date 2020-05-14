@@ -6,7 +6,10 @@ namespace App\Repository\Utils;
 use Gedmo\Exception\InvalidArgumentException;
 use Gedmo\Tree\RepositoryUtils as GedmoRepositoryUtils;
 
-
+/**
+ * Class RepositoryUtils
+ * @package App\Repository\Utils
+ */
 class RepositoryUtils extends GedmoRepositoryUtils
 {
 
@@ -26,8 +29,7 @@ class RepositoryUtils extends GedmoRepositoryUtils
             'rootClose' => '</ul>',
             'childOpen' => '<li>',
             'childClose' => '</li>',
-            'nodeDecorator' => function ($node) use ($meta) {
-                // override and change it, guessing which field to use
+            'nodeDecorator' => static function ($node) use ($meta) {
                 if ($meta->hasField('title')) {
                     $field = 'title';
                 } elseif ($meta->hasField('name')) {
@@ -43,7 +45,6 @@ class RepositoryUtils extends GedmoRepositoryUtils
             },
         );
         $options = array_merge($default, $options);
-        // If you don't want any html output it will return the nested array
         if (!$options['decorate']) {
             return $nestedTree;
         }

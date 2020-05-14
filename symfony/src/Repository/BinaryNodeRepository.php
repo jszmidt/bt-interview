@@ -7,7 +7,10 @@ use App\Repository\Utils\RepositoryUtils;
 use Doctrine\ORM\EntityManagerInterface;
 use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
 
-
+/**
+ * Class BinaryNodeRepository
+ * @package App\Repository
+ */
 class BinaryNodeRepository extends NestedTreeRepository implements BinaryNodeRepositoryInterface
 {
     public function __construct(EntityManagerInterface $manager)

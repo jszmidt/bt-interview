@@ -5,6 +5,10 @@ namespace App\DTO;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints as Assert;
 
+/**
+ * Class NodeAddDTO
+ * @package App\DTO
+ */
 final class NodeAddDTO implements RequestDTOInterface
 {
     /**

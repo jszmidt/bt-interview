@@ -1,9 +1,9 @@
 {% macro node(parentId) %}
 <div>
     <form method="post" action="{{ path('tree_node_new') }}">
-        <input class="input-username" name="userName" type="text"/>
+        <input class="input-username" name="userName" type="text" required/>
         <input type="hidden" name="parentId" value="{{ parentId }}"/>
-        <input type="submit" value="+" />
+        <input class="btn" type="submit" value="+" />
     </form>
 </div>
 {% endmacro %}

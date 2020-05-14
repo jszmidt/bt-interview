@@ -9,6 +9,10 @@ use App\Entity\BinaryNode;
 use App\Repository\BinaryNodeRepositoryInterface;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Class TreeGeneratorTest
+ * @package App\Tests\BinaryTree\Service
+ */
 class TreeGeneratorTest extends TestCase
 {
     /**
@@ -16,26 +20,27 @@ class TreeGeneratorTest extends TestCase
      */
     protected $service;
 
-    public function setUp()
+    /**
+     * @var BinaryNodeRepositoryInterface
+     */
+    protected $nestedTreeRepository;
+
+    public function setUp(): void
     {
-        $nestedTreeRepository = $this->getMockBuilder(BinaryNodeRepositoryInterface::class)
+        $this->nestedTreeRepository = $this->getMockBuilder(BinaryNodeRepositoryInterface::class)
             ->disableOriginalConstructor()
             ->getMock();
-        $nestedTreeRepository->method('children')->willReturn([new BinaryNode()]);
+        $this->nestedTreeRepository->method('children')->willReturn([new BinaryNode()]);
 
         $creator = $this->getMockBuilder(CreatorInterface::class)
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->service = new TreeGenerator($nestedTreeRepository, $creator);
+        $this->service = new TreeGenerator($this->nestedTreeRepository, $creator);
     }
 
-
-    public function testGenerate()
+    public function testGenerate(): void
     {
-        //$this->assertNull($this->service->generate(0));
-        $this->service->generate(3);
-
-        $this->expects($this->at(1));
+        $this->assertNull($this->service->generate(0));
     }
 }

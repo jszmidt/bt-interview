@@ -5,7 +5,12 @@ namespace App\BinaryTree\Service;
 use App\Entity\BinaryNode;
 use App\Repository\BinaryNodeRepositoryInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use http\Exception\InvalidArgumentException;
 
+/**
+ * Class NodeCreator
+ * @package App\BinaryTree\Service
+ */
 class NodeCreator implements CreatorInterface
 {
     /**
@@ -34,6 +39,10 @@ class NodeCreator implements CreatorInterface
      */
     public function create(array $arguments): BinaryNode
     {
+        if (!$arguments) {
+            throw new \InvalidArgumentException('Should be array with two arguments [string, int or object]');
+        }
+
         return $this->createNode($arguments[0], $arguments[1] ?? null);
     }
 

@@ -8,16 +8,25 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Positive;
 
+/**
+ * Class NodeGenerator
+ * @package App\Form
+ */
 class NodeGenerator extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    /**
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     */
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('nodesCount', IntegerType::class, [
                 'constraints' => [new Positive()],
+                'attr' => ['min' => 0],
             ])
             ->add('direct', ChoiceType::class, [
-                'choices' => ['ASC' => 'ASC', 'DESC' => 'DESC']
+                'choices' => ['Left' => 'ASC', 'Right' => 'DESC']
             ]);
     }
 

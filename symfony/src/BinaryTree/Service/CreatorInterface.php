@@ -2,6 +2,10 @@
 
 namespace App\BinaryTree\Service;
 
+/**
+ * Interface CreatorInterface
+ * @package App\BinaryTree\Service
+ */
 interface CreatorInterface
 {
     /**
