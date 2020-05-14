@@ -44,7 +44,7 @@ RUN rm -rf /var/cache/apk/* && rm -rf /tmp/* && \
 ADD php.ini /etc/php7/conf.d/
 ADD php.ini /etc/php7/cli/conf.d/
 ADD php-fpm.conf /etc/php7/php-fpm.d/
-#ADD xdebug.ini  /etc/php7/conf.d/
+ADD xdebug.ini  /etc/php7/conf.d/
 
 WORKDIR /var/www/symfony
 

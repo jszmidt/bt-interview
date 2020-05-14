@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -62,38 +63,93 @@ class BinaryNode
      */
     private $children;
 
-    public function __construct()
+    public function __construct($userName = 'node name')
     {
+        $this->userName = $userName;
         $this->children = new ArrayCollection();
     }
 
-    public function getId()
+    /**
+     * @return int
+     */
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function setUserName($userName)
+    /**
+     * @param $userName
+     * @return $this
+     */
+    public function setUserName($userName): self
     {
         $this->userName = $userName;
+        return $this;
     }
 
-    public function getUserName()
+    /**
+     * @return string
+     */
+    public function getUserName(): string
     {
         return $this->userName;
     }
 
-    public function getRoot()
+    /**
+     * @return $this|null
+     */
+    public function getRoot(): ?self
     {
         return $this->root;
     }
 
-    public function setParent(BinaryNode $parent = null)
+    /**
+     * @param BinaryNode|null $parent
+     * @return $this
+     */
+    public function setParent(BinaryNode $parent = null): self
     {
         $this->parent = $parent;
+        return $this;
     }
 
-    public function getParent()
+    /**
+     * @return $this|null
+     */
+    public function getParent(): ?self
     {
         return $this->parent;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getLft(): ?int
+    {
+        return $this->lft;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getLvl(): ?int
+    {
+        return $this->lvl;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getRgt(): ?int
+    {
+        return $this->rgt;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->userName;
     }
 }

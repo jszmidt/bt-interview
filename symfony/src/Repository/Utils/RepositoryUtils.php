@@ -1,18 +1,19 @@
 <?php
 
 
-namespace App\Repository;
+namespace App\Repository\Utils;
 
-use Doctrine\Common\Persistence\Mapping\ClassMetadata;
-use Doctrine\Common\Persistence\ObjectManager;
 use Gedmo\Exception\InvalidArgumentException;
 use Gedmo\Tree\RepositoryUtils as GedmoRepositoryUtils;
 
 
 class RepositoryUtils extends GedmoRepositoryUtils
 {
+
     /**
-     * {@inheritDoc}
+     * @param array $nodes
+     * @param array $options
+     * @return array|string
      */
     public function buildTree(array $nodes, array $options = array())
     {

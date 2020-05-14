@@ -1,0 +1,36 @@
+{% macro tree(nodes) %}
+    {% import "/tree/_form_node.html.twig" as form %}
+
+    {% for k,node in nodes %}
+        <li>
+            <div>
+                <b>{{ node.lft }}</b> {{ node.userName }} <b>{{ node.rgt }}</b>
+                <form method="post" action="{{ path('tree_node_delete', {'id': node.id}) }}"
+                      onsubmit="return confirm('Are you sure you want to delete this item?');">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ node.id) }}">
+                    <input type="submit" value="-" />
+                </form>
+            </div>
+            {% if node.__children %}
+                <ul>
+                    {{ _self.tree(node.__children) }}
+                    {% if node.__children|length is same as(1) %}
+                        <li>
+                            {{ form.node(node.id) }}
+                        </li>
+                    {% endif %}
+                </ul>
+            {% else %}
+                <ul>
+                    <li>
+                        {{ form.node(node.id) }}
+                    </li>
+                    <li>
+                        {{ form.node(node.id) }}
+                    </li>
+                </ul>
+            {% endif %}
+        </li>
+    {% endfor %}
+{% endmacro %}

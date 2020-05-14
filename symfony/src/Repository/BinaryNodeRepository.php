@@ -3,12 +3,12 @@
 namespace App\Repository;
 
 use App\Entity\BinaryNode;
+use App\Repository\Utils\RepositoryUtils;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\Persistence\ManagerRegistry;
 use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
 
 
-class BinaryNodeRepository extends NestedTreeRepository
+class BinaryNodeRepository extends NestedTreeRepository implements BinaryNodeRepositoryInterface
 {
     public function __construct(EntityManagerInterface $manager)
     {
