@@ -8,6 +8,7 @@ use App\DTO\NodeAddDTO;
 use App\Entity\BinaryNode;
 use App\Form\NodeGenerator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Finder\Exception\AccessDeniedException;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -83,6 +84,9 @@ class TreeController extends AbstractController
     public function delete(Request $request, BinaryNode $binaryNode): Response
     {
         if ($this->isCsrfTokenValid('delete' . $binaryNode->getId(), $request->request->get('_token'))) {
+            if (!$binaryNode->getParent()) {
+                throw new AccessDeniedException('Not allowed');
+            }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($binaryNode);
             $entityManager->flush();
