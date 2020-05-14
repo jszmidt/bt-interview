@@ -40,8 +40,10 @@ select{
     top: 1px;
 }
 
-.container {
-    /*overflow: scroll;*/
+.tree{
+    overflow: auto;
+    height: 100%;
+    width: 9999px;
 }
 
 .input-username {

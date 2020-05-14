@@ -29,6 +29,11 @@ run fixtures:
 ```bash
  php bin/console doctrine:fixtures:load
 ```
+run tests:
+```bash
+ php bin/phpunit
+```
+
 ## Usage
 Go to:
 [localhost](http://localhost/)
