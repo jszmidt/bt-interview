@@ -23,7 +23,7 @@ class NodeGenerator extends AbstractType
         $builder
             ->add('nodesCount', IntegerType::class, [
                 'constraints' => [new Positive()],
-                'attr' => ['min' => 0],
+                'attr' => ['min' => 1],
             ])
             ->add('direct', ChoiceType::class, [
                 'choices' => ['Left' => 'ASC', 'Right' => 'DESC']
